@@ -8,7 +8,7 @@ pipeline{
                 steps{
                     checkout([$class: 'GitSCM',
                         branches: [[name: 'main']],
-                        userRemoteConfigs: [[url: 'https://github.com/a22hay/jenkinsfile-pipeline-repo.git'
+                        userRemoteConfigs: [[url: 'https://github.com/a22hay/test.git',
                         credentialsId: 'git_repo_test']]])
                 }   
             }
@@ -55,7 +55,7 @@ pipeline{
             steps {
                 script {
                     if (CHOICES == 'yes') {
-                        deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', url: 'http://3.110.27.147:8080', path: '')],
+                        deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', url: 'http://3.110.27.147:9080', path: '')],
                                         contextPath: '/calculator',
                                         war: 'calculator_app/target/calculator.war'
                     } else {
