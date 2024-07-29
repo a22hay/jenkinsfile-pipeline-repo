@@ -9,7 +9,7 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM',
                         branches: [[name: 'main']],
-                        userRemoteConfigs: [[url: 'https://github.com/harshaprakash100/java_app.git',
+                        userRemoteConfigs: [[url: 'https://github.com/a22hay/jenkinsfile-pipeline-repo.git',
                         credentialsId: 'github_hp']]])
             }
         }
@@ -69,7 +69,7 @@ pipeline {
                     def tomcatImage = ''
                     dir('./calculator_app/') {
                         docker.withRegistry('', 'docker_hub') {
-                            tomcatImage = docker.build("harshaprakash/java_app:latest", " .")
+                            tomcatImage = docker.build("akshayms8921/docker:latest", " .")
                             tomcatImage.push()
                         }
                     }
